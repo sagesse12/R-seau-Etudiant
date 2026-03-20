@@ -5,7 +5,7 @@ exports.getProfile = async (req, res) => {
     try {
         const { userId } = req.params; // ID du profil à consulter
 
-        // 1️⃣ Infos utilisateur
+        // 1️ Infos utilisateur
         const userResult = await pool.query(
             "SELECT id, name, email FROM users WHERE id = $1",
             [userId]
@@ -17,21 +17,21 @@ exports.getProfile = async (req, res) => {
 
         const user = userResult.rows[0];
 
-        // 2️⃣ Nombre de followers
+        // 2️ Nombre de followers
         const followersResult = await pool.query(
             "SELECT COUNT(*) FROM followers WHERE following_id = $1",
             [userId]
         );
         const followersCount = parseInt(followersResult.rows[0].count);
 
-        // 3️⃣ Nombre de following
+        // 3️ Nombre de following
         const followingResult = await pool.query(
             "SELECT COUNT(*) FROM followers WHERE follower_id = $1",
             [userId]
         );
         const followingCount = parseInt(followingResult.rows[0].count);
 
-        // 4️⃣ Posts de l'utilisateur avec nombre de likes
+        // 4️ Posts de l'utilisateur avec nombre de likes
         const postsResult = await pool.query(
             `SELECT posts.*, COUNT(likes.id) AS like_count
              FROM posts
