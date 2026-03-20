@@ -9,7 +9,7 @@ Bienvenue sur le dépôt du projet **Réseau Étudiant**. Cette application est 
 
 ##  Technologies utilisées
 - **Backend** : Node.js, Express
-- **Base de données** : PostgreSQL (via DBeaver)
+- **Base de données** : PostgreSQL 
 - **Gestion de version** : Git & GitHub
 
 ## Installation
